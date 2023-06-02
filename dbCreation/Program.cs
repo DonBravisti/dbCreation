@@ -11,17 +11,17 @@ namespace dbCreation
     {
         static void Main(string[] args)
         {
-			string connStr = "Database=; Data Source=localhost; User Id=root; Password=Aa123456;";
-			MySqlConnection connection = new MySqlConnection(connStr);
+			string connectionString = "Database=; Data Source=localhost; User Id=root; Password=Aa123456;";
+			MySqlConnection connection = new MySqlConnection(connectionString);
 
 			try
 			{
 				connection.Open();
 				Console.WriteLine("opened...");
 
-				string query = "CREATE SCHEMA IF NOT EXISTS `my_db`;" +
+				string queryCreateDB = "CREATE SCHEMA IF NOT EXISTS `my_db`;" +
 								"USE my_db";
-				MySqlCommand command = new MySqlCommand(query, connection);
+				MySqlCommand command = new MySqlCommand(queryCreateDB, connection);
 				command.ExecuteNonQuery();
 
 				string queryCreateDocs = "CREATE TABLE IF NOT EXISTS documents (" +
@@ -46,8 +46,13 @@ namespace dbCreation
 				command = new MySqlCommand(queryCreateUsers, connection);
 				command.ExecuteNonQuery();
 
+				string queryInsertDocs = "INSERT INTO `my_db`.`documents` (`title`) VALUES ('doc1')";
+				string queryInsertDeps = "INSERT INTO `my_db`.`departments` (`title`, `document_id`) VALUES ('doc1')";
+				string queryInsertUsers = "INSERT INTO `my_db`.`users` (`name`, `department_id`) VALUES ('ted', '1')";
 
-
+				command = new MySqlCommand(queryInsertDocs, connection);
+				command = new MySqlCommand(queryInsertDeps, connection);
+				command = new MySqlCommand(queryInsertUsers, connection);
 			}
 			catch (MySqlException ex)
 			{
