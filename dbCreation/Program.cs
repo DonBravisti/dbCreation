@@ -14,6 +14,7 @@ namespace dbCreation
 			string connectionString = "Database=; Data Source=localhost; User Id=root; Password=Aa123456;";
 			MySqlConnection connection = new MySqlConnection(connectionString);
             Console.WriteLine("hey");
+            Console.WriteLine("hey2");
             try
 			{
 				connection.Open();
