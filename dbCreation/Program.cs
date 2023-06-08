@@ -15,6 +15,7 @@ namespace dbCreation
 			MySqlConnection connection = new MySqlConnection(connectionString);
             Console.WriteLine("hey");
             Console.WriteLine("hey2");
+            Console.WriteLine("blet");
             try
 			{
 				connection.Open();
