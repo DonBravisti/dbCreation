@@ -13,8 +13,8 @@ namespace dbCreation
         {
 			string connectionString = "Database=; Data Source=localhost; User Id=root; Password=Aa123456;";
 			MySqlConnection connection = new MySqlConnection(connectionString);
-
-			try
+            Console.WriteLine("hey");
+            try
 			{
 				connection.Open();
 				Console.WriteLine("opened...");
